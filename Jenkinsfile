@@ -20,7 +20,7 @@ pipeline {
         stage('Install Node') {   
             steps {
                 sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash'
-                sh 'source /var/lib/jenkins/.bashrc'
+       //         sh 'source /var/lib/jenkins/.bashrc'
                 sh 'nvm install v14.15.4'
             }    
         }
