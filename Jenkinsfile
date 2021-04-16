@@ -21,8 +21,8 @@ pipeline {
             steps {
                 sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash'
                 sh 'sudo chmod u+x /var/lib/jenkins/.nvm/nvm.sh'
-                sh 'export NVM_DIR="$HOME/.nvm"'
-                sh '. "$NVM_DIR/nvm.sh"'
+                sh "export NVM_DIR=$HOME/.nvm"
+                sh ". $NVM_DIR/nvm.sh"
                 //sh '. ~/.bashrc'
                 
                 //sh '. ~/.nvm/nvm.sh'
