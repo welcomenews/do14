@@ -6,8 +6,9 @@ pipeline {
     stages {
         stage('Git clone') {
            steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']],
-                userRemoteConfigs: [[url: 'git@github.com:welcomenews/do14.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']],
+                //userRemoteConfigs: [[url: 'git@github.com:welcomenews/do14.git']]])
+                userRemoteConfigs: [[url: 'https://github.com/nodejs/nodejs.org.git']]])
            }    
         }    
     //    stage('Install nginx') {
