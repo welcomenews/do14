@@ -21,7 +21,7 @@ pipeline {
             steps {
                 sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash'
                 sh '. /var/lib/jenkins/.bashrc'
-                sh '~/.nvm/nvm.sh'
+                sh 'sudo /var/lib/jenkins/.nvm/nvm.sh'
                 sh 'nvm install v14.15.4'
             }    
         }
