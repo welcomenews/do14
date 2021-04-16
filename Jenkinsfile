@@ -20,13 +20,13 @@ pipeline {
         stage('Install Node') {   
             steps {
                 sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash'
-       //         sh 'source /var/lib/jenkins/.bashrc'
-                sh 'sudo /var/lib/jenkins/.nvm/nvm.sh install v14.15.4'
+                sh 'sudo source /var/lib/jenkins/.bashrc'
+                sh 'nvm' install v14.15.4'
             }    
         }
         stage('npm install') {   
             steps {
-                sh 'cd /var/lib/jenkins/workspace/nodejs.org && sudo npm install'
+                sh 'cd /var/lib/jenkins/workspace/nodejs.org && npm install'
             }    
         }
         
