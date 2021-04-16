@@ -16,14 +16,19 @@ pipeline {
     //        }
     //    }
    
-/*      stage('Configure nginx') {   
+        stage('Install Node') {   
             steps {
-                sh "sudo mkdir -p /var/www/html/releases/$version"
-                sh "sudo cp /var/lib/jenkins/workspace/install-nginx/index.html /var/www/html/releases/$version"
-                sh "sudo chown www-data:www-data /var/www/html/releases/$version/index.html"
-      //        sh 'sudo cp nginx.conf /etc/nginx/'
+                sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash'
+                sh 'source ~/.bashrc'
+                sh 'nvm install v14.15.4'
             }    
         }
+        stage('npm install') {   
+            steps {
+                sh 'cd nodejs.org && npm install'
+            }    
+        }
+ /*       
         stage('Rewrate index-simlink') {
             when { expression { return fileExists ('/var/www/html/index-simlink') } }
             steps {
