@@ -23,7 +23,7 @@ pipeline {
                 sh '. /var/lib/jenkins/.bashrc'
                 sh 'sudo chmod u+x /var/lib/jenkins/.nvm/nvm.sh'
                 sh '/var/lib/jenkins/.nvm/nvm.sh'
-                sh 'nvm install v14.15.4'
+                sh '/var/lib/jenkins/.nvm/nvm.sh install v14.15.4'
             }    
         }
         stage('npm install') {   
