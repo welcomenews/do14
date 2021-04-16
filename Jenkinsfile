@@ -25,7 +25,7 @@ pipeline {
         }
         stage('npm install') {   
             steps {
-                sh 'cd nodejs.org && npm install'
+                sh 'cd /var/lib/jenkins/workspace/nodejs.org && npm install'
             }    
         }
  /*       
