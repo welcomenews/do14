@@ -30,19 +30,19 @@ pipeline {
             }    
         }
         
-     #   stage('Rewrate index-simlink') {
-     #       when { expression { return fileExists ('/var/www/html/index-simlink') } }
-     #       steps {
-     #           sh "sudo ln -sfT /var/www/html/releases/$version/ /var/www/html/index-simlink"
-     #           sh 'sudo systemctl reload nginx.service'
-     #       }  
-     #   }
-     #   stage('Remove old versions\'s folders') {
-     #      steps {
-     #           sh 'cd /var/www/html/releases/'
-     #           sh 'ls -dtr /var/www/html/releases/*/ | head -n -5 | sudo xargs -r rm -rf --'
-     #       }
-     #   }
+     //   stage('Rewrate index-simlink') {
+      //      when { expression { return fileExists ('/var/www/html/index-simlink') } }
+      //      steps {
+       //         sh "sudo ln -sfT /var/www/html/releases/$version/ /var/www/html/index-simlink"
+     //           sh 'sudo systemctl reload nginx.service'
+     //       }  
+     //   }
+     //   stage('Remove old versions\'s folders') {
+     //      steps {
+     //           sh 'cd /var/www/html/releases/'
+      //          sh 'ls -dtr /var/www/html/releases/*/ | head -n -5 | sudo xargs -r rm -rf --'
+     //       }
+     //   }
   
     }
 }
