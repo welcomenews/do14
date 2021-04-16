@@ -43,6 +43,6 @@ pipeline {
 ////                sh 'ls -dtr /var/www/html/releases/*/ //| head -n -5 | sudo xargs -r rm -rf --'
             }
         }
-    */
+    \*/
     }
 }
