@@ -34,17 +34,23 @@ pipeline {
             steps {
                 sh 'cd /var/lib/jenkins/workspace/do-14Pre && npm install ; ls -l /var/lib/jenkins/workspace/do-14Pre ; npm run build'
                 sh 'ls -l /var/lib/jenkins/workspace/do-14Pre'
+                archiveArtifacts artifacts: 'build/', fingerprint: true
             }    
         }
         
 //        stage('Get artifact') {   
 //            steps {
-    }    
-    post {
-        always {
-            archiveArtifacts artifacts: 'build/', fingerprint: true
-        }    
-    }
+        
+//    post {
+//        always {
+//            archiveArtifacts artifacts: 'build/', fingerprint: true
+//        }    
+//    }
+        stage('pull artifact') {
+            steps {
+                copyArtifacts filter: 'build/', target: '/var/www/html/index-simlink/']);
+            }
+        }        
         
      //   stage('Rewrate index-simlink') {
       //      when { expression { return fileExists ('/var/www/html/index-simlink') } }
