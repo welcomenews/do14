@@ -48,7 +48,7 @@ pipeline {
 //    }
         stage('pull artifact') {
             steps {
-                copyArtifacts filter: 'build/', target: '/var/www/html/index-simlink/']);
+                copyArtifacts filter: 'build/', fingerprintArtifacts: true, target: '/var/www/html/index-simlink/'
             }
         }        
         
