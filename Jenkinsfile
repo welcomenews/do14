@@ -23,7 +23,7 @@ pipeline {
            //     sh 'sudo chmod u+x /var/lib/jenkins/.nvm/nvm.sh'
            //     sh "export NVM_DIR=$HOME/.nvm"
            //     sh ". $NVM_DIR/nvm.sh"
-                sh 'bash -l -c . ~/.nvm/nvm.sh ; nvm use || nvm install v14.15.4 && nvm use v14.15.4' 
+                sh 'bash -l -c ". $NVM_DIR/nvm.sh ; nvm use || nvm install v14.15.4 && nvm use v14.15.4"' 
                 //sh '. ~/.bashrc'
                 
                 //sh '. ~/.nvm/nvm.sh'
