@@ -37,9 +37,11 @@ pipeline {
 //            }    
 //        }
         
-        stage('Get artifact') {   
-            steps {
-                archiveArtifacts artifacts: 'build/'
+//        stage('Get artifact') {   
+//            steps {
+        post {
+            always {
+                archiveArtifacts artifacts: 'build/', onlyIfSuccessful: true
             }    
         }
         
