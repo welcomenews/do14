@@ -28,8 +28,8 @@ pipeline {
  
         stage('npm install') {   
             steps {
-                sh 'cd /var/lib/jenkins/workspace/do-14Pre && npm install ; ls -l /var/lib/jenkins/workspace/do-14Pre ; npm run build'
-                sh 'ls -l /var/lib/jenkins/workspace/do-14Pre'
+                sh 'cd /var/lib/jenkins/workspace/do-14Pre && npm install ; npm run build'
+//                sh 'ls -l /var/lib/jenkins/workspace/do-14Pre'
                 archiveArtifacts artifacts: 'build/', fingerprint: true
             }    
         }
