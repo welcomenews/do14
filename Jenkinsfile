@@ -17,22 +17,22 @@ pipeline {
     //        }
     //    }
    
-     ///   stage('Install Node') {   
-        ///    steps {
-      ///          sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash'
-    ///            sh 'bash -l -c ". $HOME/.nvm/nvm.sh ; nvm install v14.15.4 && nvm use v14.15.4"' 
+        stage('Install Node') {   
+            steps {
+                sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash'
+                sh 'bash -l -c ". $HOME/.nvm/nvm.sh ; nvm install v14.15.4 && nvm use v14.15.4"' 
                 //sh '. ~/.bashrc'
                 //sh '. ~/.nvm/nvm.sh'
-      ///      }    
-  ///      }
+            }    
+        }
  
-//        stage('npm install') {   
-//            steps {
-//                sh 'cd /var/lib/jenkins/workspace/do-14Pre && npm install ; ls -l /var/lib/jenkins/workspace/do-14Pre ; npm run build'
-//                sh 'ls -l /var/lib/jenkins/workspace/do-14Pre'
-//                archiveArtifacts artifacts: 'build/', fingerprint: true
-//            }    
-//        }
+        stage('npm install') {   
+            steps {
+                sh 'cd /var/lib/jenkins/workspace/do-14Pre && npm install ; ls -l /var/lib/jenkins/workspace/do-14Pre ; npm run build'
+                sh 'ls -l /var/lib/jenkins/workspace/do-14Pre'
+                archiveArtifacts artifacts: 'build/', fingerprint: true
+            }    
+        }
         
 //    post {
 //        always {
