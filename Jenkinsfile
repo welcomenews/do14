@@ -39,7 +39,7 @@ pipeline {
         
         stage('Get artifact') {   
             steps {
-                archiveArtifacts artifacts: /var/lib/jenkins/workspace/do-14Pre/build/*
+                archiveArtifacts artifacts: '/var/lib/jenkins/workspace/do-14Pre/build/*'
             }    
         }
         
