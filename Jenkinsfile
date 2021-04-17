@@ -32,7 +32,8 @@ pipeline {
         }
         stage('npm install') {   
             steps {
-                sh 'cd /var/lib/jenkins/workspace/do-14Pre && npm install ; ls -l /var/lib/jenkins/workspace/do-14Pre ; npm build'
+                sh 'cd /var/lib/jenkins/workspace/do-14Pre && npm install ; ls -l /var/lib/jenkins/workspace/do-14Pre ; npm run build'
+                sh 'ls -l /var/lib/jenkins/workspace/do-14Pre'
             }    
         }
         
