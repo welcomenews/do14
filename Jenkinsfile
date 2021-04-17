@@ -17,23 +17,29 @@ pipeline {
     //        }
     //    }
    
-        stage('Install Node') {   
-            steps {
-                sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash'
+     ///   stage('Install Node') {   
+        ///    steps {
+      ///          sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash'
            //     sh 'sudo chmod u+x /var/lib/jenkins/.nvm/nvm.sh'
            //     sh "export NVM_DIR=$HOME/.nvm"
            //     sh ". $NVM_DIR/nvm.sh"
-                sh 'bash -l -c ". $HOME/.nvm/nvm.sh ; nvm install v14.15.4 && nvm use v14.15.4"' 
+    ///            sh 'bash -l -c ". $HOME/.nvm/nvm.sh ; nvm install v14.15.4 && nvm use v14.15.4"' 
                 //sh '. ~/.bashrc'
                 
                 //sh '. ~/.nvm/nvm.sh'
-                //sh 'nvm install v14.15.4'
-            }    
-        }
-        stage('npm install') {   
+              //sh 'nvm install v14.15.4'
+      ///      }    
+  ///      }
+//        stage('npm install') {   
+///            steps {
+//                sh 'cd /var/lib/jenkins/workspace/do-14Pre && npm install ; ls -l /var/lib/jenkins/workspace/do-14Pre ; npm run build'
+//                sh 'ls -l /var/lib/jenkins/workspace/do-14Pre'
+//            }    
+//        }
+        
+        stage('Get artifact') {   
             steps {
-                sh 'cd /var/lib/jenkins/workspace/do-14Pre && npm install ; ls -l /var/lib/jenkins/workspace/do-14Pre ; npm run build'
-                sh 'ls -l /var/lib/jenkins/workspace/do-14Pre'
+                archiveArtifacts artifacts: /var/lib/jenkins/workspace/do-14Pre/build/*
             }    
         }
         
