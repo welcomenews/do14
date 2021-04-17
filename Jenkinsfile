@@ -49,13 +49,19 @@ pipeline {
 //            }
 //        }        
         
-     //   stage('Rewrate index-simlink') {
-      //      when { expression { return fileExists ('/var/www/html/index-simlink') } }
-      //      steps {
-       //         sh "sudo ln -sfT /var/www/html/releases/$version/ /var/www/html/index-simlink"
-     //           sh 'sudo systemctl reload nginx.service'
-     //       }  
-     //   }
+        stage('Rewrate index-simlink') {
+            when { expression { return fileExists ('/var/www/html/index-simlink') } }
+            steps {
+                sh "sudo ln -sfT /var/www/html/releases/$version/ /var/www/html/index-simlink"
+                sh 'sudo systemctl reload nginx.service'
+            }  
+        }
+        stage('Copy static site') {
+            steps {
+                sh 'sudo cp -rf /var/lib/jenkins/workspace/do-14Pre/build/ /var/www/html/index-simlink'
+            }    
+        }    
+        
      //   stage('Remove old versions\'s folders') {
      //      steps {
      //           sh 'cd /var/www/html/releases/'
