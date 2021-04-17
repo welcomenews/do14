@@ -38,19 +38,16 @@ pipeline {
             }    
         }
         
-//        stage('Get artifact') {   
-//            steps {
-        
 //    post {
 //        always {
 //            archiveArtifacts artifacts: 'build/', fingerprint: true
 //        }    
 //    }
-        stage('pull artifact') {
-            steps {
-                copyArtifacts filter: 'build/', fingerprintArtifacts: true, target: '/var/www/html/index-simlink/'
-            }
-        }        
+//        stage('pull artifact') {
+//            steps {
+//                copyArtifacts filter: 'build/', fingerprintArtifacts: true, target: '/var/www/html/index-simlink/'
+//            }
+//        }        
         
      //   stage('Rewrate index-simlink') {
       //      when { expression { return fileExists ('/var/www/html/index-simlink') } }
