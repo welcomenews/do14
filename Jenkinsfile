@@ -20,23 +20,19 @@ pipeline {
      ///   stage('Install Node') {   
         ///    steps {
       ///          sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash'
-           //     sh 'sudo chmod u+x /var/lib/jenkins/.nvm/nvm.sh'
-           //     sh "export NVM_DIR=$HOME/.nvm"
-           //     sh ". $NVM_DIR/nvm.sh"
     ///            sh 'bash -l -c ". $HOME/.nvm/nvm.sh ; nvm install v14.15.4 && nvm use v14.15.4"' 
                 //sh '. ~/.bashrc'
-                
                 //sh '. ~/.nvm/nvm.sh'
-              //sh 'nvm install v14.15.4'
       ///      }    
   ///      }
-        stage('npm install') {   
-            steps {
-                sh 'cd /var/lib/jenkins/workspace/do-14Pre && npm install ; ls -l /var/lib/jenkins/workspace/do-14Pre ; npm run build'
-                sh 'ls -l /var/lib/jenkins/workspace/do-14Pre'
-                archiveArtifacts artifacts: 'build/', fingerprint: true
-            }    
-        }
+ 
+//        stage('npm install') {   
+//            steps {
+//                sh 'cd /var/lib/jenkins/workspace/do-14Pre && npm install ; ls -l /var/lib/jenkins/workspace/do-14Pre ; npm run build'
+//                sh 'ls -l /var/lib/jenkins/workspace/do-14Pre'
+//                archiveArtifacts artifacts: 'build/', fingerprint: true
+//            }    
+//        }
         
 //    post {
 //        always {
@@ -49,6 +45,14 @@ pipeline {
 //            }
 //        }        
         
+        stage('Copy static site') {
+            steps {
+                sh "sudo mkdir -p /var/www/html/releases/$version"
+                sh "sudo cp -rf /var/lib/jenkins/workspace/do-14Pre/build/ /var/www/html/releases/$version"
+                sh "sudo chown www-data:www-data /var/www/html/releases/$version/*"
+           }
+        }
+        
         stage('Rewrate index-simlink') {
             when { expression { return fileExists ('/var/www/html/index-simlink') } }
             steps {
@@ -56,18 +60,11 @@ pipeline {
                 sh 'sudo systemctl reload nginx.service'
             }  
         }
-        stage('Copy static site') {
-            steps {
-                sh 'sudo cp -rf /var/lib/jenkins/workspace/do-14Pre/build/ /var/www/html/index-simlink'
-            }    
-        }    
-        
-     //   stage('Remove old versions\'s folders') {
-     //      steps {
-     //           sh 'cd /var/www/html/releases/'
-      //          sh 'ls -dtr /var/www/html/releases/*/ | head -n -5 | sudo xargs -r rm -rf --'
-     //       }
-     //   }
-  
+        stage('Remove old versions\'s folders') {
+           steps {
+                sh 'cd /var/www/html/releases/'
+                sh 'ls -dtr /var/www/html/releases/*/ | head -n -5 | sudo xargs -r rm -rf --'
+            }
+        }
     } 
 }
