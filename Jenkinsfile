@@ -2,7 +2,7 @@
 def version = 'v0.9'
 
 pipeline {
-    agent any
+    agent { label 'agent' }
     stages {
         stage('Git clone') {
            steps {
