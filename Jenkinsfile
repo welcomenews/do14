@@ -41,7 +41,7 @@ pipeline {
 //            steps {
     post {
         always {
-            archiveArtifacts artifacts: 'build/', onlyIfSuccessful: true
+            archiveArtifacts artifacts: 'build/', fingerprint: true
         }    
     }
         
