@@ -39,6 +39,7 @@ pipeline {
         
 //        stage('Get artifact') {   
 //            steps {
+    }    
     post {
         always {
             archiveArtifacts artifacts: 'build/', fingerprint: true
@@ -59,5 +60,5 @@ pipeline {
      //       }
      //   }
   
-    }
+    
 }
