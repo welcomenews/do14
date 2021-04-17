@@ -30,20 +30,20 @@ pipeline {
               //sh 'nvm install v14.15.4'
       ///      }    
   ///      }
-//        stage('npm install') {   
-///            steps {
-//                sh 'cd /var/lib/jenkins/workspace/do-14Pre && npm install ; ls -l /var/lib/jenkins/workspace/do-14Pre ; npm run build'
-//                sh 'ls -l /var/lib/jenkins/workspace/do-14Pre'
-//            }    
-//        }
+        stage('npm install') {   
+            steps {
+                sh 'cd /var/lib/jenkins/workspace/do-14Pre && npm install ; ls -l /var/lib/jenkins/workspace/do-14Pre ; npm run build'
+                sh 'ls -l /var/lib/jenkins/workspace/do-14Pre'
+            }    
+        }
         
 //        stage('Get artifact') {   
 //            steps {
-        post {
-            always {
-                archiveArtifacts artifacts: 'build/', onlyIfSuccessful: true
-            }    
-        }
+    post {
+        always {
+            archiveArtifacts artifacts: 'build/', onlyIfSuccessful: true
+        }    
+    }
         
      //   stage('Rewrate index-simlink') {
       //      when { expression { return fileExists ('/var/www/html/index-simlink') } }
