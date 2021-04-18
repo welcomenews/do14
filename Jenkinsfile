@@ -3,7 +3,6 @@ def version = 'v0.9'
 
 pipeline {
     agent { label 'agent2' }
-    tools {nodejs "latest"}
     stages {
         stage('Git clone') {
            steps {
@@ -18,11 +17,11 @@ pipeline {
     //        }
     //    }
    
-//        stage('Install npm') {
-//            steps {
-                
-//            }
-//        }
+        stage('Install npm') {
+            steps {
+                sh 'bash -l -c "sudo apt-get install g++ build-essential -y"'
+            }
+        }
         stage('Install Node') {   
             steps {
                 sh 'bash -l -c "touch ~/.bashrc"'
