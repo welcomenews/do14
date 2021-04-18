@@ -17,14 +17,14 @@ pipeline {
     //        }
     //    }
    
-        stage('Install npm') {
-            steps {
-                sh 'bash -l -c "sudo apt-get install g++ build-essential -y"'
-                sh 'bash -l -c "sudo apt-get install nodejs -y"'
+    ///    stage('Install npm') {
+     ///       steps {
+      ///          sh 'bash -l -c "sudo apt-get install g++ build-essential -y"'
+      ///          sh 'bash -l -c "sudo apt-get install nodejs -y"'
                 //sh '. ~/.nvm/nvm.sh'
                 //sh '. ~/.bashrc'
-            }
-        }
+      ///      }
+      ///  }
         stage('Install Node and project build') {   
             steps {
                 sh 'bash -l -c "touch ~/.bashrc"'
