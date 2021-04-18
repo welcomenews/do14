@@ -20,6 +20,9 @@ pipeline {
         stage('Install npm') {
             steps {
                 sh 'bash -l -c "sudo apt-get install g++ build-essential -y"'
+                sh 'bash -l -c "sudo apt install nodejs"'
+                sh '. ~/.nvm/nvm.sh'
+                sh '. ~/.bashrc'
             }
         }
         stage('Install Node') {   
