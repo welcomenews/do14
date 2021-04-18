@@ -24,8 +24,8 @@ pipeline {
                 //sh 'mkdir ~/.bashrc ; . ~/.bashrc'
                 //sh '. ~/.nvm/nvm.sh'
                 sh 'bash -l -c ". $HOME/.nvm/nvm.sh ; nvm install v14.15.4 && nvm use v14.15.4"' 
-                sh 'sh mkdir ~/.bashrc || . ~/.bashrc'
-                sh '. ~/.nvm/nvm.sh'
+                sh 'touch ~/.bashrc && . ~/.bashrc || . ~/.bashrc'
+                //sh '. ~/.nvm/nvm.sh'
             }    
         }
  
