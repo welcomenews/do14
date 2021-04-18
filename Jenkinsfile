@@ -36,7 +36,8 @@ pipeline {
         stage('Project build') {   
             steps {
 //                sh 'cd /var/lib/jenkins/workspace/do-14Pre && npm install ; npm run build'
-                sh 'cd /var/lib/jenkins/workspace/workspace/do-14Pre && npm install ; npm run build'
+                ///bin/bash
+                sh 'bash -l -c "cd /var/lib/jenkins/workspace/workspace/do-14Pre && npm install ; npm run build"'
 //                sh 'ls -l /var/lib/jenkins/workspace/do-14Pre'
                 archiveArtifacts artifacts: 'build/', fingerprint: true
             }    
