@@ -25,15 +25,17 @@ pipeline {
                 //sh '. ~/.bashrc'
             }
         }
-        stage('Install Node') {   
+        stage('Install Node and project build') {   
             steps {
                 sh 'bash -l -c "touch ~/.bashrc"'
                 sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash'
                 //sh 'bash -l -c ". $HOME/.nvm/nvm.sh ; nvm install v14.15.4 ; nvm use v14.15.4"'
-                sh 'bash -l -c ". $HOME/.nvm/nvm.sh ; nvm use v14.15.4 || nvm install v14.15.4 && nvm use v14.15.4 ; cd /var/lib/jenkins/workspace/do-14Pre && npm install"'
+                sh 'bash -l -c ". $HOME/.nvm/nvm.sh ; nvm use v14.15.4 || nvm install v14.15.4 && nvm use v14.15.4 ; cd /var/lib/jenkins/workspace/do-14Pre && npm install ; npm run build"'
+                archiveArtifacts artifacts: 'build/', fingerprint: true
                 //sh '. ~/.nvm/nvm.sh'
                 sh '. ~/.bashrc'
-                sh 'bash -l -c "source ~/.bashrc"'
+                
+                //sh 'bash -l -c "source ~/.bashrc"'
     //            sh '''#!/bin/bash
     //            source /etc/profile
     //            source ~/.bashrc
@@ -43,20 +45,20 @@ pipeline {
             }    
         }
  
-        stage('Project build') {   
-            steps {
+        ///stage('Project build') {   
+            ///steps {
 //                sh 'cd /var/lib/jenkins/workspace/do-14Pre && npm install ; npm run build'
                 //sh 'bash -l -c "sudo apt install npm -y"'
              //   sh '''#!/bin/bash
              //   /bin/bash
-                sh 'bash -l -c "cd /var/lib/jenkins/workspace/do-14Pre && npm install ; npm run build"'
+            ///    sh 'bash -l -c "cd /var/lib/jenkins/workspace/do-14Pre && npm install ; npm run build"'
             //    cd /var/lib/jenkins/workspace/do-14Pre && npm install
             //    npm run build
             //    '''
 //                sh 'ls -l /var/lib/jenkins/workspace/do-14Pre'
-                archiveArtifacts artifacts: 'build/', fingerprint: true
-            }    
-        }
+              ///  archiveArtifacts artifacts: 'build/', fingerprint: true
+           /// }    
+        ///}
         
 //    post {
 //        always {
