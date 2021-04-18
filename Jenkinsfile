@@ -28,7 +28,8 @@ pipeline {
  
         stage('npm install') {   
             steps {
-                sh 'cd /var/lib/jenkins/workspace/do-14Pre && npm install ; npm run build'
+//                sh 'cd /var/lib/jenkins/workspace/do-14Pre && npm install ; npm run build'
+                sh 'cd /var/lib/jenkins/workspace/workspace/do-14Pre && npm install ; npm run build'
 //                sh 'ls -l /var/lib/jenkins/workspace/do-14Pre'
                 archiveArtifacts artifacts: 'build/', fingerprint: true
             }    
@@ -48,7 +49,8 @@ pipeline {
         stage('Copy static site') {
             steps {
                 sh "sudo mkdir -p /var/www/html/releases/$version"
-                sh "sudo cp -rf /var/lib/jenkins/workspace/do-14Pre/build/ /var/www/html/releases/$version"
+//                sh "sudo cp -rf /var/lib/jenkins/workspace/do-14Pre/build/ /var/www/html/releases/$version"
+                sh "sudo cp -rf /var/lib/jenkins/workspace/workspace/do-14Pre/build/ /var/www/html/releases/$version"
                 sh "sudo chown -R www-data:www-data /var/www/html/releases/$version/*"
            }
         }
