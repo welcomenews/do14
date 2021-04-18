@@ -19,12 +19,12 @@ pipeline {
    
         stage('Install Node') {   
             steps {
-                sh 'sudo apt install npm -y'
+                //sh 'sudo apt install npm -y'
                 sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash'
                 //sh 'mkdir ~/.bashrc ; . ~/.bashrc'
                 //sh '. ~/.nvm/nvm.sh'
                 sh 'bash -l -c ". $HOME/.nvm/nvm.sh ; nvm install v14.15.4 && nvm use v14.15.4"'
-                sh 'sudo . /root/.bashrc'
+                //sh 'sudo . /root/.bashrc'
                 sh 'touch ~/.bashrc && . ~/.bashrc || . ~/.bashrc'
                 //sh '. ~/.nvm/nvm.sh'
             }    
