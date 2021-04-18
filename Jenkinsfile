@@ -26,6 +26,7 @@ pipeline {
                 archiveArtifacts artifacts: 'build/', fingerprint: true
                 sh '. ~/.bashrc'
                 //sh 'bash -l -c "source ~/.bashrc"'
+                
     //            sh '''#!/bin/bash
     //            source /etc/profile
     //            source ~/.bashrc
