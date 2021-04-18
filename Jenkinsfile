@@ -20,7 +20,7 @@ pipeline {
         stage('Install Node') {   
             steps {
                 sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash'
-                sh 'mkdir ~/.bashrc ; . ~/.bashrc'
+                //sh 'mkdir ~/.bashrc ; . ~/.bashrc'
                 sh '. ~/.nvm/nvm.sh'
                 sh 'bash -l -c ". $HOME/.nvm/nvm.sh ; nvm install v14.15.4 && nvm use v14.15.4"' 
                 //sh '. ~/.bashrc'
