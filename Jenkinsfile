@@ -21,7 +21,7 @@ pipeline {
             steps {
                 sh 'bash -l -c "sudo apt-get install g++ build-essential -y"'
                 sh 'bash -l -c "sudo apt-get install nodejs -y"'
-                sh '. ~/.nvm/nvm.sh'
+                //sh '. ~/.nvm/nvm.sh'
                 sh '. ~/.bashrc'
             }
         }
@@ -31,7 +31,7 @@ pipeline {
                 sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash'
                 //sh 'bash -l -c ". $HOME/.nvm/nvm.sh ; nvm install v14.15.4 ; nvm use v14.15.4"'
                 sh 'bash -l -c ". $HOME/.nvm/nvm.sh ; nvm use v14.15.4 || nvm install v14.15.4 && nvm use v14.15.4"'
-                sh '. ~/.nvm/nvm.sh'
+                //sh '. ~/.nvm/nvm.sh'
                 sh '. ~/.bashrc'
                 sh 'bash -l -c "source ~/.bashrc"'
     //            sh '''#!/bin/bash
