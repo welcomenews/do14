@@ -2,7 +2,7 @@
 def version = 'v0.9'
 
 pipeline {
-    agent { label 'agent1' }
+    agent { label 'agent2' }
     stages {
         stage('Git clone') {
            steps {
@@ -38,8 +38,8 @@ pipeline {
 //                sh 'cd /var/lib/jenkins/workspace/do-14Pre && npm install ; npm run build'
              //   sh '''#!/bin/bash
              //   /bin/bash
-                sh 'bash -l -c "cd /var/lib/jenkins/workspace/workspace/do-14Pre && npm install ; npm run build"'
-            //    cd /var/lib/jenkins/workspace/workspace/do-14Pre && npm install
+                sh 'bash -l -c "cd /var/lib/jenkins/workspacedo-14Pre && npm install ; npm run build"'
+            //    cd /var/lib/jenkins/workspace/do-14Pre && npm install
             //    npm run build
             //    '''
 //                sh 'ls -l /var/lib/jenkins/workspace/do-14Pre'
@@ -62,7 +62,7 @@ pipeline {
             steps {
                 sh "sudo mkdir -p /var/www/html/releases/$version"
 //                sh "sudo cp -rf /var/lib/jenkins/workspace/do-14Pre/build/ /var/www/html/releases/$version"
-                sh "sudo cp -rf /var/lib/jenkins/workspace/workspace/do-14Pre/build/ /var/www/html/releases/$version"
+                sh "sudo cp -rf /var/lib/jenkins/workspace/do-14Pre/build/ /var/www/html/releases/$version"
                 sh "sudo chown -R www-data:www-data /var/www/html/releases/$version/*"
            }
         }
