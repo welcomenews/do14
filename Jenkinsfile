@@ -24,10 +24,10 @@ pipeline {
                 //sh 'bash -l -c ". $HOME/.nvm/nvm.sh ; nvm install v14.15.4 ; nvm use v14.15.4"'
                 sh 'bash -l -c ". $HOME/.nvm/nvm.sh ; nvm use v14.15.4 || nvm install v14.15.4 && nvm use v14.15.4"'
                 sh 'bash -l -c "source ~/.bashrc"'
-                sh '''#!/bin/bash
-                source /etc/profile
-                source ~/.bashrc
-                '''
+    //            sh '''#!/bin/bash
+    //            source /etc/profile
+    //            source ~/.bashrc
+    //            '''
                 //sh 'nvm use v14.15.4'
                 //sh '. ~/.nvm/nvm.sh'
             }    
@@ -36,12 +36,12 @@ pipeline {
         stage('Project build') {   
             steps {
 //                sh 'cd /var/lib/jenkins/workspace/do-14Pre && npm install ; npm run build'
-                sh '''#!/bin/bash
-                /bin/bash
-                //sh 'bash -l -c "cd /var/lib/jenkins/workspace/workspace/do-14Pre && npm install ; npm run build"'
-                cd /var/lib/jenkins/workspace/workspace/do-14Pre && npm install
-                npm run build
-                '''
+             //   sh '''#!/bin/bash
+             //   /bin/bash
+                sh 'bash -l -c "cd /var/lib/jenkins/workspace/workspace/do-14Pre && npm install ; npm run build"'
+            //    cd /var/lib/jenkins/workspace/workspace/do-14Pre && npm install
+            //    npm run build
+            //    '''
 //                sh 'ls -l /var/lib/jenkins/workspace/do-14Pre'
                 archiveArtifacts artifacts: 'build/', fingerprint: true
             }    
