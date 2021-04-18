@@ -17,14 +17,6 @@ pipeline {
     //        }
     //    }
    
-    ///    stage('Install npm') {
-     ///       steps {
-      ///          sh 'bash -l -c "sudo apt-get install g++ build-essential -y"'
-      ///          sh 'bash -l -c "sudo apt-get install nodejs -y"'
-                //sh '. ~/.nvm/nvm.sh'
-                //sh '. ~/.bashrc'
-      ///      }
-      ///  }
         stage('Install Node and project build') {   
             steps {
                 sh 'bash -l -c "touch ~/.bashrc"'
@@ -32,34 +24,15 @@ pipeline {
                 //sh 'bash -l -c ". $HOME/.nvm/nvm.sh ; nvm install v14.15.4 ; nvm use v14.15.4"'
                 sh 'bash -l -c ". $HOME/.nvm/nvm.sh ; nvm use v14.15.4 || nvm install v14.15.4 && nvm use v14.15.4 ; cd /var/lib/jenkins/workspace/do-14Pre && npm install ; npm run build"'
                 archiveArtifacts artifacts: 'build/', fingerprint: true
-                //sh '. ~/.nvm/nvm.sh'
                 sh '. ~/.bashrc'
-                
                 //sh 'bash -l -c "source ~/.bashrc"'
     //            sh '''#!/bin/bash
     //            source /etc/profile
     //            source ~/.bashrc
     //            '''
-                //sh 'nvm use v14.15.4'
-                //sh '. ~/.nvm/nvm.sh'
             }    
         }
- 
-        ///stage('Project build') {   
-            ///steps {
-//                sh 'cd /var/lib/jenkins/workspace/do-14Pre && npm install ; npm run build'
-                //sh 'bash -l -c "sudo apt install npm -y"'
-             //   sh '''#!/bin/bash
-             //   /bin/bash
-            ///    sh 'bash -l -c "cd /var/lib/jenkins/workspace/do-14Pre && npm install ; npm run build"'
-            //    cd /var/lib/jenkins/workspace/do-14Pre && npm install
-            //    npm run build
-            //    '''
-//                sh 'ls -l /var/lib/jenkins/workspace/do-14Pre'
-              ///  archiveArtifacts artifacts: 'build/', fingerprint: true
-           /// }    
-        ///}
-        
+       
 //    post {
 //        always {
 //            archiveArtifacts artifacts: 'build/', fingerprint: true
@@ -77,6 +50,7 @@ pipeline {
 //                sh "sudo cp -rf /var/lib/jenkins/workspace/do-14Pre/build/ /var/www/html/releases/$version"
                 sh "sudo cp -rf /var/lib/jenkins/workspace/do-14Pre/build/ /var/www/html/releases/$version"
                 sh "sudo chown -R www-data:www-data /var/www/html/releases/$version/*"
+                sh "sudo ln -sfT /var/www/html/releases/$version/ /var/www/html/index-simlink || true"
            }
         }
         
