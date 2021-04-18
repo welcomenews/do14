@@ -19,6 +19,7 @@ pipeline {
    
         stage('Install Node') {   
             steps {
+                sh 'sudo apt install npm -y'
                 sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash'
                 //sh 'mkdir ~/.bashrc ; . ~/.bashrc'
                 //sh '. ~/.nvm/nvm.sh'
@@ -28,9 +29,8 @@ pipeline {
             }    
         }
  
-        stage('npm install') {   
+        stage('Project build') {   
             steps {
-                sh 'sudo apt install npm -y'
 //                sh 'cd /var/lib/jenkins/workspace/do-14Pre && npm install ; npm run build'
                 sh 'cd /var/lib/jenkins/workspace/workspace/do-14Pre && npm install ; npm run build'
 //                sh 'ls -l /var/lib/jenkins/workspace/do-14Pre'
