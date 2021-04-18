@@ -38,7 +38,7 @@ pipeline {
 //                sh 'cd /var/lib/jenkins/workspace/do-14Pre && npm install ; npm run build'
              //   sh '''#!/bin/bash
              //   /bin/bash
-                sh 'bash -l -c "cd /var/lib/jenkins/workspacedo-14Pre && npm install ; npm run build"'
+                sh 'bash -l -c "cd /var/lib/jenkins/workspace/do-14Pre && npm install ; npm run build"'
             //    cd /var/lib/jenkins/workspace/do-14Pre && npm install
             //    npm run build
             //    '''
