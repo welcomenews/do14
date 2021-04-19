@@ -17,22 +17,37 @@ pipeline {
     //        }
     //    }
    
-        stage('Install Node and project build') {   
+        stage('Install Node and project build') {
             steps {
-                sh 'bash -l -c "touch ~/.bashrc"'
-                sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash'
-                //sh 'bash -l -c ". $HOME/.nvm/nvm.sh ; nvm install v14.15.4 ; nvm use v14.15.4"'
-                sh 'bash -l -c ". $HOME/.nvm/nvm.sh ; nvm use v14.15.4 || nvm install v14.15.4 && nvm use v14.15.4 ; cd /var/lib/jenkins/workspace/do-14Pre && npm install ; npm run build"'
-                archiveArtifacts artifacts: 'build/', fingerprint: true
-                sh '. ~/.bashrc'
+                nvm(nvmInstallURL: 'https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh', 
+                   nvmIoJsOrgMirror: 'https://iojs.org/dist',
+                   nvmNodeJsOrgMirror: 'https://nodejs.org/dist', 
+                   version: 'v14.15.4') {
+                       sh "npm install"
+                       echo "=========== Build main site distribution ========="
+                       sh "npm run build:dist"
+                   }
+            }
+        }
+        
+        
+        
+///++++++        stage('Install Node and project build') {   
+///            steps {
+///                sh 'bash -l -c "touch ~/.bashrc"'
+///                sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash'
+///                //sh 'bash -l -c ". $HOME/.nvm/nvm.sh ; nvm install v14.15.4 ; nvm use v14.15.4"'
+///                sh 'bash -l -c ". $HOME/.nvm/nvm.sh ; nvm use v14.15.4 || nvm install v14.15.4 && nvm use v14.15.4 ; cd /var/lib/jenkins/workspace/do-14Pre && npm install ; npm run build"'
+///                archiveArtifacts artifacts: 'build/', fingerprint: true
+///                sh '. ~/.bashrc'
                 //sh 'bash -l -c "source ~/.bashrc"'
                 
     //            sh '''#!/bin/bash
     //            source /etc/profile
     //            source ~/.bashrc
     //            '''
-            }    
-        }
+ ///           }    
+ ///++++++++       }
        
 //    post {
 //        always {
