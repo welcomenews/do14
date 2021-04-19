@@ -21,7 +21,7 @@ pipeline {
             steps {
                sh 'mkdir ~/.bashrc'
                sh 'bash -l -c "sudo apt install nodejs -y"'
-               sh '. ~/.bashrc
+               sh '. ~/.bashrc'
             }
         }
         
