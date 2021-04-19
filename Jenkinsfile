@@ -33,7 +33,7 @@ pipeline {
                    version: 'v14.15.4') {
                        sh "npm install"
                        echo "=========== Build main site distribution ========="
-                       sh "npm run build:dist"
+                       sh "npm run build"
                    }
             }
         }
