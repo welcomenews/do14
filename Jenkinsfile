@@ -19,7 +19,7 @@ pipeline {
    
         stage('Install Node and project build') {
             steps {
-                nvm(nvmInstallURL: 'https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh', 
+                nvm(nvmInstallURL: 'https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh', 
                    nvmIoJsOrgMirror: 'https://iojs.org/dist',
                    nvmNodeJsOrgMirror: 'https://nodejs.org/dist', 
                    version: 'v14.15.4') {
