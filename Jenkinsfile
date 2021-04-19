@@ -62,7 +62,6 @@ pipeline {
         stage('Copy static site') {
             steps {
                 sh "sudo mkdir -p /var/www/html/releases/$version"
-//                sh "sudo cp -rf /var/lib/jenkins/workspace/do-14Pre/build/ /var/www/html/releases/$version"
                 sh "sudo cp -rf /var/lib/jenkins/workspace/do-14Pre/build/ /var/www/html/releases/$version"
                 sh "sudo chown -R www-data:www-data /var/www/html/releases/$version/*"
                 sh "sudo ln -sfT /var/www/html/releases/$version/ /var/www/html/index-simlink || true"
