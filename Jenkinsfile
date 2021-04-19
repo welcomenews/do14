@@ -17,13 +17,13 @@ pipeline {
     //        }
     //    }
    
-        stage('Default Nodejs') {
-            steps {
-               sh 'mkdir ~/.bashrc'
-               sh 'bash -l -c "sudo apt install nodejs -y"'
-               sh '. ~/.bashrc'
-            }
-        }
+  //      stage('Default Nodejs') {
+  //          steps {
+  //             sh 'mkdir ~/.bashrc'
+  //             sh 'bash -l -c "sudo apt install nodejs -y"'
+  //             sh '. ~/.bashrc'
+  //          }
+  //      }
         
         stage('Install Node and project build') {
             steps {
