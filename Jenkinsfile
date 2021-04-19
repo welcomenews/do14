@@ -17,6 +17,14 @@ pipeline {
     //        }
     //    }
    
+        stage('Default Nodejs') {
+            steps {
+               sh 'mkdir ~/.bashrc'
+               sh 'bash -l -c "sudo apt install nodejs -y"'
+               sh '. ~/.bashrc
+            }
+        }
+        
         stage('Install Node and project build') {
             steps {
                 nvm(nvmInstallURL: 'https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh', 
