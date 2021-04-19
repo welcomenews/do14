@@ -16,14 +16,6 @@ pipeline {
     //            sh 'sudo apt install nginx -y'    
     //        }
     //    }
-   
-  //      stage('Default Nodejs') {
-  //          steps {
-  //             sh 'mkdir ~/.bashrc'
-  //             sh 'bash -l -c "sudo apt install nodejs -y"'
-  //             sh '. ~/.bashrc'
-  //          }
-  //      }
         
         stage('Install Node and project build') {
             steps {
@@ -34,12 +26,11 @@ pipeline {
                        sh "npm install"
                        echo "=========== Build main site distribution ========="
                        sh "npm run build"
+                       archiveArtifacts artifacts: 'build/', fingerprint: true
                    }
             }
         }
-        
-        
-        
+                
 ///++++++        stage('Install Node and project build') {   
 ///            steps {
 ///                sh 'bash -l -c "touch ~/.bashrc"'
